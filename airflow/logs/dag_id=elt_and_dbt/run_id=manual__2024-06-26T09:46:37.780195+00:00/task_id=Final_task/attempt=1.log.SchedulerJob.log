@@ -1,0 +1,1 @@
+[2024-06-26T09:46:39.629+0000] {scheduler_job_runner.py:769} ERROR - Executor reports task instance <TaskInstance: elt_and_dbt.Final_task manual__2024-06-26T09:46:37.780195+00:00 [queued]> finished (success) although the task says it's queued. (Info: None) Was the task killed externally?

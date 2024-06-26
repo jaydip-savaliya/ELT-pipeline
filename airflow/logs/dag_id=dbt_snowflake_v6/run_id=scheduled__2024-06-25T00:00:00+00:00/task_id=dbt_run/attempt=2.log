@@ -1,0 +1,42 @@
+[2024-06-26T03:39:40.569+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-06-26T03:39:40.630+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dbt_snowflake_v6.dbt_run scheduled__2024-06-25T00:00:00+00:00 [queued]>
+[2024-06-26T03:39:40.644+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dbt_snowflake_v6.dbt_run scheduled__2024-06-25T00:00:00+00:00 [queued]>
+[2024-06-26T03:39:40.644+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 2
+[2024-06-26T03:39:40.667+0000] {taskinstance.py:2330} INFO - Executing <Task(DockerOperator): dbt_run> on 2024-06-25 00:00:00+00:00
+[2024-06-26T03:39:40.683+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'dbt_snowflake_v6', 'dbt_run', 'scheduled__2024-06-25T00:00:00+00:00', '--job-id', '41', '--raw', '--subdir', 'DAGS_FOLDER/first_dag.py', '--cfg-path', '/tmp/tmp0oqxux2e']
+[2024-06-26T03:39:40.687+0000] {standard_task_runner.py:91} INFO - Job 41: Subtask dbt_run
+[2024-06-26T03:39:40.688+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=281) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-06-26T03:39:40.689+0000] {standard_task_runner.py:63} INFO - Started process 282 to run task
+[2024-06-26T03:39:40.774+0000] {task_command.py:426} INFO - Running <TaskInstance: dbt_snowflake_v6.dbt_run scheduled__2024-06-25T00:00:00+00:00 [running]> on host 40877dbc4b09
+[2024-06-26T03:39:40.916+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dbt_snowflake_v6' AIRFLOW_CTX_TASK_ID='dbt_run' AIRFLOW_CTX_EXECUTION_DATE='2024-06-25T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-25T00:00:00+00:00'
+[2024-06-26T03:39:40.917+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-06-26T03:39:40.948+0000] {docker.py:157} ERROR - Failed to establish connection to Docker host tcp://docker-proxy:2375: Error while fetching server API version: HTTPConnectionPool(host='docker-proxy', port=2375): Max retries exceeded with url: /version (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x788b558b66c0>: Failed to resolve 'docker-proxy' ([Errno -3] Temporary failure in name resolution)"))
+[2024-06-26T03:39:40.949+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-06-26T03:39:40.963+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/docker/operators/docker.py", line 492, in execute
+    if self.force_pull or not self.cli.images(name=self.image):
+                              ^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/docker/operators/docker.py", line 362, in cli
+    return self.hook.api_client
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/functools.py", line 995, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/docker/hooks/docker.py", line 161, in api_client
+    raise AirflowException("Failed to establish connection to any given Docker hosts.")
+airflow.exceptions.AirflowException: Failed to establish connection to any given Docker hosts.
+[2024-06-26T03:39:40.971+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=dbt_snowflake_v6, task_id=dbt_run, run_id=scheduled__2024-06-25T00:00:00+00:00, execution_date=20240625T000000, start_date=20240626T033940, end_date=20240626T033940
+[2024-06-26T03:39:40.990+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 41 for task dbt_run (Failed to establish connection to any given Docker hosts.; 282)
+[2024-06-26T03:39:41.032+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-06-26T03:39:41.069+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-06-26T03:39:41.076+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

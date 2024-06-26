@@ -1,0 +1,43 @@
+[2024-06-26T09:47:30.583+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-06-26T09:47:30.635+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: elt_and_dbt.dbt_run manual__2024-06-26T09:47:27.685831+00:00 [queued]>
+[2024-06-26T09:47:30.650+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: elt_and_dbt.dbt_run manual__2024-06-26T09:47:27.685831+00:00 [queued]>
+[2024-06-26T09:47:30.651+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-06-26T09:47:30.676+0000] {taskinstance.py:2330} INFO - Executing <Task(DockerOperator): dbt_run> on 2024-06-26 09:47:27.685831+00:00
+[2024-06-26T09:47:30.689+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'elt_and_dbt', 'dbt_run', 'manual__2024-06-26T09:47:27.685831+00:00', '--job-id', '21', '--raw', '--subdir', 'DAGS_FOLDER/first_dag.py', '--cfg-path', '/tmp/tmpeuiiop82']
+[2024-06-26T09:47:30.693+0000] {standard_task_runner.py:91} INFO - Job 21: Subtask dbt_run
+[2024-06-26T09:47:30.698+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=807) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-06-26T09:47:30.699+0000] {standard_task_runner.py:63} INFO - Started process 808 to run task
+[2024-06-26T09:47:30.772+0000] {task_command.py:426} INFO - Running <TaskInstance: elt_and_dbt.dbt_run manual__2024-06-26T09:47:27.685831+00:00 [running]> on host 7347636032b9
+[2024-06-26T09:47:30.918+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='elt_and_dbt' AIRFLOW_CTX_TASK_ID='dbt_run' AIRFLOW_CTX_EXECUTION_DATE='2024-06-26T09:47:27.685831+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-06-26T09:47:27.685831+00:00'
+[2024-06-26T09:47:30.919+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-06-26T09:47:30.967+0000] {docker.py:366} INFO - Starting docker container from image ghcr.io/dbt-labs/dbt-postgres:latest
+[2024-06-26T09:47:30.971+0000] {docker.py:374} WARNING - Using remote engine or docker-in-docker and mounting temporary volume from host is not supported. Falling back to `mount_tmp_dir=False` mode. You can set `mount_tmp_dir` parameter to False to disable mounting and remove the warning
+[2024-06-26T09:47:34.053+0000] {docker.py:436} INFO - [0m09:47:34  Running with dbt=1.8.3
+[2024-06-26T09:47:34.537+0000] {docker.py:436} INFO - [0m09:47:34  Registered adapter: postgres=1.8.2
+[2024-06-26T09:47:35.171+0000] {docker.py:436} INFO - [0m09:47:35  Found 6 models, 19 data tests, 3 sources, 417 macros
+[2024-06-26T09:47:35.176+0000] {docker.py:436} INFO - [0m09:47:35
+[2024-06-26T09:47:35.443+0000] {docker.py:436} INFO - [0m09:47:35  Concurrency: 1 threads (target='dev')
+[0m09:47:35
+[2024-06-26T09:47:35.464+0000] {docker.py:436} INFO - [0m09:47:35  1 of 6 START sql table model public.actors ..................................... [RUN]
+[2024-06-26T09:47:35.708+0000] {docker.py:436} INFO - [0m09:47:35  1 of 6 OK created sql table model public.actors ................................ [[32mSELECT 120[0m in 0.24s]
+[2024-06-26T09:47:35.714+0000] {docker.py:436} INFO - [0m09:47:35  2 of 6 START sql table model public.film_actors ................................ [RUN]
+[2024-06-26T09:47:35.809+0000] {docker.py:436} INFO - [0m09:47:35  2 of 6 OK created sql table model public.film_actors ........................... [[32mSELECT 120[0m in 0.09s]
+[2024-06-26T09:47:35.812+0000] {docker.py:436} INFO - [0m09:47:35  3 of 6 START sql table model public.films ...................................... [RUN]
+[2024-06-26T09:47:35.896+0000] {docker.py:436} INFO - [0m09:47:35  3 of 6 OK created sql table model public.films ................................. [[32mSELECT 120[0m in 0.08s]
+[2024-06-26T09:47:35.902+0000] {docker.py:436} INFO - [0m09:47:35  4 of 6 START sql table model public.film_classification ........................ [RUN]
+[2024-06-26T09:47:36.009+0000] {docker.py:436} INFO - [0m09:47:36  4 of 6 OK created sql table model public.film_classification ................... [[32mSELECT 120[0m in 0.11s]
+[2024-06-26T09:47:36.013+0000] {docker.py:436} INFO - [0m09:47:36  5 of 6 START sql table model public.film_ratings ............................... [RUN]
+[2024-06-26T09:47:36.108+0000] {docker.py:436} INFO - [0m09:47:36  5 of 6 OK created sql table model public.film_ratings .......................... [[32mSELECT 120[0m in 0.09s]
+[2024-06-26T09:47:36.111+0000] {docker.py:436} INFO - [0m09:47:36  6 of 6 START sql table model public.specific_movie ............................. [RUN]
+[2024-06-26T09:47:36.193+0000] {docker.py:436} INFO - [0m09:47:36  6 of 6 OK created sql table model public.specific_movie ........................ [[32mSELECT 6[0m in 0.08s]
+[2024-06-26T09:47:36.212+0000] {docker.py:436} INFO - [0m09:47:36  
+[0m09:47:36  Finished running 6 table models in 0 hours 0 minutes and 1.03 seconds (1.03s).
+[2024-06-26T09:47:36.383+0000] {docker.py:436} INFO - [0m09:47:36
+[2024-06-26T09:47:36.383+0000] {docker.py:436} INFO - [0m09:47:36  [32mCompleted successfully[0m
+[2024-06-26T09:47:36.384+0000] {docker.py:436} INFO - [0m09:47:36
+[2024-06-26T09:47:36.385+0000] {docker.py:436} INFO - [0m09:47:36  Done. PASS=6 WARN=0 ERROR=0 SKIP=0 TOTAL=6
+[2024-06-26T09:47:38.440+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-06-26T09:47:38.475+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=elt_and_dbt, task_id=dbt_run, run_id=manual__2024-06-26T09:47:27.685831+00:00, execution_date=20240626T094727, start_date=20240626T094730, end_date=20240626T094738
+[2024-06-26T09:47:38.503+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-06-26T09:47:38.533+0000] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-06-26T09:47:38.536+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

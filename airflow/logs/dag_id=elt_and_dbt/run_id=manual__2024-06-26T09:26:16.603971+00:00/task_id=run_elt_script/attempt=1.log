@@ -1,0 +1,330 @@
+[2024-06-26T09:26:17.628+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-06-26T09:26:17.697+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: elt_and_dbt.run_elt_script manual__2024-06-26T09:26:16.603971+00:00 [queued]>
+[2024-06-26T09:26:17.720+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: elt_and_dbt.run_elt_script manual__2024-06-26T09:26:16.603971+00:00 [queued]>
+[2024-06-26T09:26:17.720+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-06-26T09:26:17.741+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): run_elt_script> on 2024-06-26 09:26:16.603971+00:00
+[2024-06-26T09:26:17.755+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'elt_and_dbt', 'run_elt_script', 'manual__2024-06-26T09:26:16.603971+00:00', '--job-id', '3', '--raw', '--subdir', 'DAGS_FOLDER/first_dag.py', '--cfg-path', '/tmp/tmpsoz9pec_']
+[2024-06-26T09:26:17.759+0000] {standard_task_runner.py:91} INFO - Job 3: Subtask run_elt_script
+[2024-06-26T09:26:17.763+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=183) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-06-26T09:26:17.764+0000] {standard_task_runner.py:63} INFO - Started process 184 to run task
+[2024-06-26T09:26:17.828+0000] {task_command.py:426} INFO - Running <TaskInstance: elt_and_dbt.run_elt_script manual__2024-06-26T09:26:16.603971+00:00 [running]> on host 7347636032b9
+[2024-06-26T09:26:17.955+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='elt_and_dbt' AIRFLOW_CTX_TASK_ID='run_elt_script' AIRFLOW_CTX_EXECUTION_DATE='2024-06-26T09:26:16.603971+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-06-26T09:26:16.603971+00:00'
+[2024-06-26T09:26:17.957+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-06-26T09:26:18.833+0000] {logging_mixin.py:188} INFO - --
+-- PostgreSQL database dump
+--
+-- Dumped from database version 13.15 (Debian 13.15-1.pgdg120+1)
+-- Dumped by pg_dump version 16.3 (Debian 16.3-1.pgdg120+1)
+SET statement_timeout = 0;
+SET
+SET lock_timeout = 0;
+SET
+SET idle_in_transaction_session_timeout = 0;
+SET
+SET client_encoding = 'UTF8';
+SET
+SET standard_conforming_strings = on;
+SET
+SELECT pg_catalog.set_config('search_path', '', false);
+ set_config 
+------------
+ 
+(1 row)
+
+SET check_function_bodies = false;
+SET
+SET xmloption = content;
+SET
+SET client_min_messages = warning;
+SET
+SET row_security = off;
+SET
+--
+-- Name: public; Type: SCHEMA; Schema: -; Owner: postgres
+--
+-- *not* creating schema, since initdb creates it
+ALTER SCHEMA public OWNER TO postgres;
+ALTER SCHEMA
+SET default_tablespace = '';
+SET
+SET default_table_access_method = heap;
+SET
+--
+-- Name: actors; Type: TABLE; Schema: public; Owner: postgres
+--
+CREATE TABLE public.actors (
+    actor_id integer NOT NULL,
+    actor_name character varying(255) NOT NULL
+);
+CREATE TABLE
+ALTER TABLE public.actors OWNER TO postgres;
+ALTER TABLE
+--
+-- Name: actors_actor_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+CREATE SEQUENCE public.actors_actor_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+CREATE SEQUENCE
+ALTER SEQUENCE public.actors_actor_id_seq OWNER TO postgres;
+ALTER SEQUENCE
+--
+-- Name: actors_actor_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+ALTER SEQUENCE public.actors_actor_id_seq OWNED BY public.actors.actor_id;
+ALTER SEQUENCE
+--
+-- Name: film_actors; Type: TABLE; Schema: public; Owner: postgres
+--
+CREATE TABLE public.film_actors (
+    film_id integer NOT NULL,
+    actor_id integer NOT NULL
+);
+CREATE TABLE
+ALTER TABLE public.film_actors OWNER TO postgres;
+ALTER TABLE
+--
+-- Name: film_category; Type: TABLE; Schema: public; Owner: postgres
+--
+CREATE TABLE public.film_category (
+    category_id integer NOT NULL,
+    film_id integer,
+    category_name character varying(50) NOT NULL
+);
+CREATE TABLE
+ALTER TABLE public.film_category OWNER TO postgres;
+ALTER TABLE
+--
+-- Name: film_category_category_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+CREATE SEQUENCE public.film_category_category_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+CREATE SEQUENCE
+ALTER SEQUENCE public.film_category_category_id_seq OWNER TO postgres;
+ALTER SEQUENCE
+--
+-- Name: film_category_category_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+ALTER SEQUENCE public.film_category_category_id_seq OWNED BY public.film_category.category_id;
+ALTER SEQUENCE
+--
+-- Name: films; Type: TABLE; Schema: public; Owner: postgres
+--
+CREATE TABLE public.films (
+    film_id integer NOT NULL,
+    title character varying(255) NOT NULL,
+    release_date date,
+    price numeric(5,2),
+    rating character varying(10),
+    user_rating numeric(2,1),
+    CONSTRAINT films_user_rating_check CHECK (((user_rating >= (1)::numeric) AND (user_rating <= (5)::numeric)))
+);
+CREATE TABLE
+ALTER TABLE public.films OWNER TO postgres;
+ALTER TABLE
+--
+-- Name: films_film_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+CREATE SEQUENCE public.films_film_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+CREATE SEQUENCE
+ALTER SEQUENCE public.films_film_id_seq OWNER TO postgres;
+ALTER SEQUENCE
+--
+-- Name: films_film_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+ALTER SEQUENCE public.films_film_id_seq OWNED BY public.films.film_id;
+ALTER SEQUENCE
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
+--
+CREATE TABLE public.users (
+    id integer NOT NULL,
+    first_name character varying(50),
+    last_name character varying(50),
+    email character varying(100),
+    date_of_birth date
+);
+CREATE TABLE
+ALTER TABLE public.users OWNER TO postgres;
+ALTER TABLE
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+CREATE SEQUENCE public.users_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+CREATE SEQUENCE
+ALTER SEQUENCE public.users_id_seq OWNER TO postgres;
+ALTER SEQUENCE
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+ALTER SEQUENCE
+--
+-- Name: actors actor_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+ALTER TABLE ONLY public.actors ALTER COLUMN actor_id SET DEFAULT nextval('public.actors_actor_id_seq'::regclass);
+ALTER TABLE
+--
+-- Name: film_category category_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+ALTER TABLE ONLY public.film_category ALTER COLUMN category_id SET DEFAULT nextval('public.film_category_category_id_seq'::regclass);
+ALTER TABLE
+--
+-- Name: films film_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+ALTER TABLE ONLY public.films ALTER COLUMN film_id SET DEFAULT nextval('public.films_film_id_seq'::regclass);
+ALTER TABLE
+--
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+ALTER TABLE
+--
+-- Data for Name: actors; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+COPY public.actors (actor_id, actor_name) FROM stdin;
+COPY 20
+--
+-- Data for Name: film_actors; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+COPY public.film_actors (film_id, actor_id) FROM stdin;
+COPY 20
+--
+-- Data for Name: film_category; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+COPY public.film_category (category_id, film_id, category_name) FROM stdin;
+COPY 39
+--
+-- Data for Name: films; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+COPY public.films (film_id, title, release_date, price, rating, user_rating) FROM stdin;
+COPY 20
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+COPY public.users (id, first_name, last_name, email, date_of_birth) FROM stdin;
+COPY 14
+--
+-- Name: actors_actor_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+SELECT pg_catalog.setval('public.actors_actor_id_seq', 20, true);
+ setval 
+--------
+     20
+(1 row)
+
+--
+-- Name: film_category_category_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+SELECT pg_catalog.setval('public.film_category_category_id_seq', 39, true);
+ setval 
+--------
+     39
+(1 row)
+
+--
+-- Name: films_film_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+SELECT pg_catalog.setval('public.films_film_id_seq', 20, true);
+ setval 
+--------
+     20
+(1 row)
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+SELECT pg_catalog.setval('public.users_id_seq', 14, true);
+ setval 
+--------
+     14
+(1 row)
+
+--
+-- Name: actors actors_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+ALTER TABLE ONLY public.actors
+    ADD CONSTRAINT actors_pkey PRIMARY KEY (actor_id);
+ALTER TABLE
+--
+-- Name: film_actors film_actors_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+ALTER TABLE ONLY public.film_actors
+    ADD CONSTRAINT film_actors_pkey PRIMARY KEY (film_id, actor_id);
+ALTER TABLE
+--
+-- Name: film_category film_category_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+ALTER TABLE ONLY public.film_category
+    ADD CONSTRAINT film_category_pkey PRIMARY KEY (category_id);
+ALTER TABLE
+--
+-- Name: films films_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+ALTER TABLE ONLY public.films
+    ADD CONSTRAINT films_pkey PRIMARY KEY (film_id);
+ALTER TABLE
+--
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+ALTER TABLE
+--
+-- Name: film_actors film_actors_actor_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+ALTER TABLE ONLY public.film_actors
+    ADD CONSTRAINT film_actors_actor_id_fkey FOREIGN KEY (actor_id) REFERENCES public.actors(actor_id);
+ALTER TABLE
+--
+-- Name: film_actors film_actors_film_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+ALTER TABLE ONLY public.film_actors
+    ADD CONSTRAINT film_actors_film_id_fkey FOREIGN KEY (film_id) REFERENCES public.films(film_id);
+ALTER TABLE
+--
+-- Name: film_category film_category_film_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+ALTER TABLE ONLY public.film_category
+    ADD CONSTRAINT film_category_film_id_fkey FOREIGN KEY (film_id) REFERENCES public.films(film_id);
+ALTER TABLE
+--
+-- Name: SCHEMA public; Type: ACL; Schema: -; Owner: postgres
+--
+REVOKE USAGE ON SCHEMA public FROM PUBLIC;
+REVOKE
+GRANT ALL ON SCHEMA public TO PUBLIC;
+GRANT
+--
+-- PostgreSQL database dump complete
+--
+Successfully connected to PostgreSQL!
+Starting ELT script...
+Ending ELT script...
+[2024-06-26T09:26:18.834+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-06-26T09:26:18.834+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-06-26T09:26:18.850+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=elt_and_dbt, task_id=run_elt_script, run_id=manual__2024-06-26T09:26:16.603971+00:00, execution_date=20240626T092616, start_date=20240626T092617, end_date=20240626T092618
+[2024-06-26T09:26:18.887+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-06-26T09:26:18.921+0000] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-06-26T09:26:18.924+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

@@ -1,0 +1,496 @@
+[2024-06-24T08:23:55.516+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-06-24T08:23:55.617+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: docker_postgres_dag.run_postgres_container scheduled__2024-06-24T00:00:00+00:00 [queued]>
+[2024-06-24T08:23:55.641+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: docker_postgres_dag.run_postgres_container scheduled__2024-06-24T00:00:00+00:00 [queued]>
+[2024-06-24T08:23:55.642+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2024-06-24T08:23:55.697+0000] {taskinstance.py:2330} INFO - Executing <Task(DockerOperator): run_postgres_container> on 2024-06-24 00:00:00+00:00
+[2024-06-24T08:23:55.712+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'docker_postgres_dag', 'run_postgres_container', 'scheduled__2024-06-24T00:00:00+00:00', '--job-id', '15', '--raw', '--subdir', 'DAGS_FOLDER/first_dag.py', '--cfg-path', '/tmp/tmpdupzk8t5']
+[2024-06-24T08:23:55.720+0000] {standard_task_runner.py:91} INFO - Job 15: Subtask run_postgres_container
+[2024-06-24T08:23:55.723+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=2147) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-06-24T08:23:55.724+0000] {standard_task_runner.py:63} INFO - Started process 2156 to run task
+[2024-06-24T08:23:55.863+0000] {task_command.py:426} INFO - Running <TaskInstance: docker_postgres_dag.run_postgres_container scheduled__2024-06-24T00:00:00+00:00 [running]> on host 8dde1c55cac5
+[2024-06-24T08:23:56.094+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='docker_postgres_dag' AIRFLOW_CTX_TASK_ID='run_postgres_container' AIRFLOW_CTX_EXECUTION_DATE='2024-06-24T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-24T00:00:00+00:00'
+[2024-06-24T08:23:56.095+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-06-24T08:23:56.208+0000] {docker.py:157} ERROR - Failed to establish connection to Docker host unix://var/run/docker.sock: Error while fetching server API version: ('Connection aborted.', FileNotFoundError(2, 'No such file or directory'))
+[2024-06-24T08:23:56.209+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-06-24T08:23:56.244+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/docker/operators/docker.py", line 492, in execute
+    if self.force_pull or not self.cli.images(name=self.image):
+                              ^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/docker/operators/docker.py", line 362, in cli
+    return self.hook.api_client
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/functools.py", line 995, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/docker/hooks/docker.py", line 161, in api_client
+    raise AirflowException("Failed to establish connection to any given Docker hosts.")
+airflow.exceptions.AirflowException: Failed to establish connection to any given Docker hosts.
+[2024-06-24T08:23:56.256+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=docker_postgres_dag, task_id=run_postgres_container, run_id=scheduled__2024-06-24T00:00:00+00:00, execution_date=20240624T000000, start_date=20240624T082355, end_date=20240624T082356
+[2024-06-24T08:23:56.285+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 15 for task run_postgres_container (Failed to establish connection to any given Docker hosts.; 2156)
+[2024-06-24T08:23:56.312+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-06-24T08:23:56.344+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-06-24T08:23:56.349+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-06-24T08:29:35.800+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-06-24T08:29:36.043+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: docker_postgres_dag.run_postgres_container scheduled__2024-06-24T00:00:00+00:00 [queued]>
+[2024-06-24T08:29:36.157+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: docker_postgres_dag.run_postgres_container scheduled__2024-06-24T00:00:00+00:00 [queued]>
+[2024-06-24T08:29:36.158+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2024-06-24T08:29:36.227+0000] {taskinstance.py:2330} INFO - Executing <Task(DockerOperator): run_postgres_container> on 2024-06-24 00:00:00+00:00
+[2024-06-24T08:29:36.261+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'docker_postgres_dag', 'run_postgres_container', 'scheduled__2024-06-24T00:00:00+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/first_dag.py', '--cfg-path', '/tmp/tmpgmbf1e6n']
+[2024-06-24T08:29:36.277+0000] {standard_task_runner.py:91} INFO - Job 4: Subtask run_postgres_container
+[2024-06-24T08:29:36.312+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=195) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-06-24T08:29:36.314+0000] {standard_task_runner.py:63} INFO - Started process 197 to run task
+[2024-06-24T08:29:36.479+0000] {task_command.py:426} INFO - Running <TaskInstance: docker_postgres_dag.run_postgres_container scheduled__2024-06-24T00:00:00+00:00 [running]> on host 84721074d007
+[2024-06-24T08:29:36.917+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='docker_postgres_dag' AIRFLOW_CTX_TASK_ID='run_postgres_container' AIRFLOW_CTX_EXECUTION_DATE='2024-06-24T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-24T00:00:00+00:00'
+[2024-06-24T08:29:36.919+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-06-24T08:29:37.153+0000] {docker.py:157} ERROR - Failed to establish connection to Docker host unix://var/run/docker.sock: Error while fetching server API version: ('Connection aborted.', FileNotFoundError(2, 'No such file or directory'))
+[2024-06-24T08:29:37.154+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-06-24T08:29:37.196+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/docker/operators/docker.py", line 492, in execute
+    if self.force_pull or not self.cli.images(name=self.image):
+                              ^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/docker/operators/docker.py", line 362, in cli
+    return self.hook.api_client
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/functools.py", line 995, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/docker/hooks/docker.py", line 161, in api_client
+    raise AirflowException("Failed to establish connection to any given Docker hosts.")
+airflow.exceptions.AirflowException: Failed to establish connection to any given Docker hosts.
+[2024-06-24T08:29:37.229+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=docker_postgres_dag, task_id=run_postgres_container, run_id=scheduled__2024-06-24T00:00:00+00:00, execution_date=20240624T000000, start_date=20240624T082936, end_date=20240624T082937
+[2024-06-24T08:29:37.287+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 4 for task run_postgres_container (Failed to establish connection to any given Docker hosts.; 197)
+[2024-06-24T08:29:37.315+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-06-24T08:29:37.355+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-06-24T08:29:37.359+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-06-24T08:47:54.243+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-06-24T08:47:54.367+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: docker_postgres_dag.run_postgres_container scheduled__2024-06-24T00:00:00+00:00 [queued]>
+[2024-06-24T08:47:54.391+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: docker_postgres_dag.run_postgres_container scheduled__2024-06-24T00:00:00+00:00 [queued]>
+[2024-06-24T08:47:54.391+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2024-06-24T08:47:54.426+0000] {taskinstance.py:2330} INFO - Executing <Task(DockerOperator): run_postgres_container> on 2024-06-24 00:00:00+00:00
+[2024-06-24T08:47:54.451+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=215) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-06-24T08:47:54.454+0000] {standard_task_runner.py:63} INFO - Started process 217 to run task
+[2024-06-24T08:47:54.461+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'docker_postgres_dag', 'run_postgres_container', 'scheduled__2024-06-24T00:00:00+00:00', '--job-id', '3', '--raw', '--subdir', 'DAGS_FOLDER/first_dag.py', '--cfg-path', '/tmp/tmps0unkdge']
+[2024-06-24T08:47:54.466+0000] {standard_task_runner.py:91} INFO - Job 3: Subtask run_postgres_container
+[2024-06-24T08:47:54.680+0000] {task_command.py:426} INFO - Running <TaskInstance: docker_postgres_dag.run_postgres_container scheduled__2024-06-24T00:00:00+00:00 [running]> on host c609368b5261
+[2024-06-24T08:47:55.319+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='docker_postgres_dag' AIRFLOW_CTX_TASK_ID='run_postgres_container' AIRFLOW_CTX_EXECUTION_DATE='2024-06-24T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-24T00:00:00+00:00'
+[2024-06-24T08:47:55.320+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-06-24T08:47:55.473+0000] {docker.py:157} ERROR - Failed to establish connection to Docker host unix://var/run/docker.sock: Error while fetching server API version: ('Connection aborted.', PermissionError(13, 'Permission denied'))
+[2024-06-24T08:47:55.475+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-06-24T08:47:55.502+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/docker/operators/docker.py", line 492, in execute
+    if self.force_pull or not self.cli.images(name=self.image):
+                              ^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/docker/operators/docker.py", line 362, in cli
+    return self.hook.api_client
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/functools.py", line 995, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/docker/hooks/docker.py", line 161, in api_client
+    raise AirflowException("Failed to establish connection to any given Docker hosts.")
+airflow.exceptions.AirflowException: Failed to establish connection to any given Docker hosts.
+[2024-06-24T08:47:55.519+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=docker_postgres_dag, task_id=run_postgres_container, run_id=scheduled__2024-06-24T00:00:00+00:00, execution_date=20240624T000000, start_date=20240624T084754, end_date=20240624T084755
+[2024-06-24T08:47:55.566+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 3 for task run_postgres_container (Failed to establish connection to any given Docker hosts.; 217)
+[2024-06-24T08:47:55.604+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-06-24T08:47:55.644+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-06-24T08:47:55.647+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-06-24T08:56:53.557+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-06-24T08:56:53.649+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: docker_postgres_dag.run_postgres_container scheduled__2024-06-24T00:00:00+00:00 [queued]>
+[2024-06-24T08:56:53.676+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: docker_postgres_dag.run_postgres_container scheduled__2024-06-24T00:00:00+00:00 [queued]>
+[2024-06-24T08:56:53.677+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2024-06-24T08:56:53.716+0000] {taskinstance.py:2330} INFO - Executing <Task(DockerOperator): run_postgres_container> on 2024-06-24 00:00:00+00:00
+[2024-06-24T08:56:53.731+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'docker_postgres_dag', 'run_postgres_container', 'scheduled__2024-06-24T00:00:00+00:00', '--job-id', '3', '--raw', '--subdir', 'DAGS_FOLDER/first_dag.py', '--cfg-path', '/tmp/tmp8hphoqk5']
+[2024-06-24T08:56:53.736+0000] {standard_task_runner.py:91} INFO - Job 3: Subtask run_postgres_container
+[2024-06-24T08:56:53.739+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=210) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-06-24T08:56:53.741+0000] {standard_task_runner.py:63} INFO - Started process 212 to run task
+[2024-06-24T08:56:53.895+0000] {task_command.py:426} INFO - Running <TaskInstance: docker_postgres_dag.run_postgres_container scheduled__2024-06-24T00:00:00+00:00 [running]> on host 27944d255232
+[2024-06-24T08:56:54.145+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='docker_postgres_dag' AIRFLOW_CTX_TASK_ID='run_postgres_container' AIRFLOW_CTX_EXECUTION_DATE='2024-06-24T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-24T00:00:00+00:00'
+[2024-06-24T08:56:54.149+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-06-24T08:56:54.317+0000] {docker.py:366} INFO - Starting docker container from image postgres:latest
+[2024-06-24T08:56:54.324+0000] {docker.py:374} WARNING - Using remote engine or docker-in-docker and mounting temporary volume from host is not supported. Falling back to `mount_tmp_dir=False` mode. You can set `mount_tmp_dir` parameter to False to disable mounting and remove the warning
+[2024-06-24T08:56:55.391+0000] {docker.py:436} INFO - The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+[2024-06-24T08:56:55.394+0000] {docker.py:436} INFO - The database cluster will be initialized with locale "en_US.utf8".
+The default database encoding has accordingly been set to "UTF8".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+[2024-06-24T08:56:55.395+0000] {docker.py:436} INFO - fixing permissions on existing directory /var/lib/postgresql/data ... ok
+creating subdirectories ...
+[2024-06-24T08:56:55.399+0000] {docker.py:436} INFO - ok
+[2024-06-24T08:56:55.403+0000] {docker.py:436} INFO - selecting dynamic shared memory implementation ... posix
+selecting default max_connections ...
+[2024-06-24T08:56:55.515+0000] {docker.py:436} INFO - 100
+selecting default shared_buffers ...
+[2024-06-24T08:56:55.568+0000] {docker.py:436} INFO - 128MB
+selecting default time zone ...
+[2024-06-24T08:56:55.601+0000] {docker.py:436} INFO - Etc/UTC
+creating configuration files ...
+[2024-06-24T08:56:55.605+0000] {docker.py:436} INFO - ok
+running bootstrap script ...
+[2024-06-24T08:56:55.933+0000] {docker.py:436} INFO - ok
+[2024-06-24T08:56:55.934+0000] {docker.py:436} INFO - performing post-bootstrap initialization ...
+[2024-06-24T08:56:56.883+0000] {docker.py:436} INFO - ok
+syncing data to disk ...
+[2024-06-24T08:56:58.010+0000] {docker.py:436} INFO - ok
+[2024-06-24T08:56:58.011+0000] {docker.py:436} INFO - 
+[2024-06-24T08:56:58.012+0000] {docker.py:436} INFO - initdb:
+[2024-06-24T08:56:58.012+0000] {docker.py:436} INFO - 
+[2024-06-24T08:56:58.013+0000] {docker.py:436} INFO - warning:
+[2024-06-24T08:56:58.014+0000] {docker.py:436} INFO - enabling "trust" authentication for local connections
+[2024-06-24T08:56:58.014+0000] {docker.py:436} INFO - initdb:
+[2024-06-24T08:56:58.014+0000] {docker.py:436} INFO - 
+[2024-06-24T08:56:58.015+0000] {docker.py:436} INFO - hint:
+[2024-06-24T08:56:58.016+0000] {docker.py:436} INFO - You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
+[2024-06-24T08:56:58.016+0000] {docker.py:436} INFO - Success. You can now start the database server using:
+
+    pg_ctl -D /var/lib/postgresql/data -l logfile start
+[2024-06-24T08:56:58.073+0000] {docker.py:436} INFO - waiting for server to start....
+[2024-06-24T08:56:58.122+0000] {docker.py:436} INFO - 2024-06-24 08:56:58.121 UTC [49] LOG:  starting PostgreSQL 16.3 (Debian 16.3-1.pgdg120+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14) 12.2.0, 64-bit
+[2024-06-24T08:56:58.128+0000] {docker.py:436} INFO - 2024-06-24 08:56:58.128 UTC [49] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+[2024-06-24T08:56:58.145+0000] {docker.py:436} INFO - 2024-06-24 08:56:58.145 UTC [52] LOG:  database system was shut down at 2024-06-24 08:56:56 UTC
+[2024-06-24T08:56:58.158+0000] {docker.py:436} INFO - 2024-06-24 08:56:58.157 UTC [49] LOG:  database system is ready to accept connections
+[2024-06-24T08:56:58.173+0000] {docker.py:436} INFO - done
+server started
+[2024-06-24T08:56:58.483+0000] {docker.py:436} INFO - CREATE DATABASE
+[2024-06-24T08:56:58.484+0000] {docker.py:436} INFO - 
+[2024-06-24T08:56:58.485+0000] {docker.py:436} INFO - /usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+[2024-06-24T08:56:58.487+0000] {docker.py:436} INFO - 2024-06-24 08:56:58.486 UTC [49] LOG:  received fast shutdown request
+[2024-06-24T08:56:58.487+0000] {docker.py:436} INFO - waiting for server to shut down....
+[2024-06-24T08:56:58.493+0000] {docker.py:436} INFO - 2024-06-24 08:56:58.492 UTC [49] LOG:  aborting any active transactions
+[2024-06-24T08:56:58.499+0000] {docker.py:436} INFO - 2024-06-24 08:56:58.498 UTC [49] LOG:  background worker "logical replication launcher" (PID 55) exited with exit code 1
+[2024-06-24T08:56:58.502+0000] {docker.py:436} INFO - 2024-06-24 08:56:58.499 UTC [50] LOG:  shutting down
+[2024-06-24T08:56:58.529+0000] {docker.py:436} INFO - 2024-06-24 08:56:58.528 UTC [50] LOG:  checkpoint starting: shutdown immediate
+[2024-06-24T08:56:58.779+0000] {docker.py:436} INFO - 2024-06-24 08:56:58.779 UTC [50] LOG:  checkpoint complete: wrote 922 buffers (5.6%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.051 s, sync=0.160 s, total=0.280 s; sync files=301, longest=0.028 s, average=0.001 s; distance=4255 kB, estimate=4255 kB; lsn=0/1912040, redo lsn=0/1912040
+[2024-06-24T08:56:58.794+0000] {docker.py:436} INFO - 2024-06-24 08:56:58.793 UTC [49] LOG:  database system is shut down
+[2024-06-24T08:56:58.890+0000] {docker.py:436} INFO - done
+server stopped
+[2024-06-24T08:56:58.892+0000] {docker.py:436} INFO - PostgreSQL init process complete; ready for start up.
+[2024-06-24T08:56:58.941+0000] {docker.py:436} INFO - 2024-06-24 08:56:58.940 UTC [1] LOG:  starting PostgreSQL 16.3 (Debian 16.3-1.pgdg120+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14) 12.2.0, 64-bit
+[2024-06-24T08:56:58.942+0000] {docker.py:436} INFO - 2024-06-24 08:56:58.941 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2024-06-24 08:56:58.941 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+[2024-06-24T08:56:58.953+0000] {docker.py:436} INFO - 2024-06-24 08:56:58.952 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+[2024-06-24T08:56:58.970+0000] {docker.py:436} INFO - 2024-06-24 08:56:58.965 UTC [65] LOG:  database system was shut down at 2024-06-24 08:56:58 UTC
+[2024-06-24T08:56:58.982+0000] {docker.py:436} INFO - 2024-06-24 08:56:58.981 UTC [1] LOG:  database system is ready to accept connections
+[2024-06-24T09:01:59.067+0000] {docker.py:436} INFO - 2024-06-24 09:01:59.065 UTC [63] LOG:  checkpoint starting: time
+[2024-06-24T09:02:03.336+0000] {docker.py:436} INFO - 2024-06-24 09:02:03.336 UTC [63] LOG:  checkpoint complete: wrote 45 buffers (0.3%); 0 WAL file(s) added, 0 removed, 0 recycled; write=4.231 s, sync=0.014 s, total=4.272 s; sync files=12, longest=0.006 s, average=0.002 s; distance=260 kB, estimate=260 kB; lsn=0/1953460, redo lsn=0/1953428
+[2024-06-24T09:37:31.719+0000] {local_task_job_runner.py:124} ERROR - Received SIGTERM. Terminating subprocesses
+[2024-06-24T09:37:31.770+0000] {process_utils.py:132} INFO - Sending 15 to group 212. PIDs of all processes in the group: [212]
+[2024-06-24T09:37:31.771+0000] {process_utils.py:87} INFO - Sending the signal 15 to group 212
+[2024-06-24T09:37:31.772+0000] {taskinstance.py:2611} ERROR - Received SIGTERM. Terminating subprocesses.
+[2024-06-24T09:37:31.773+0000] {docker.py:528} INFO - Stopping docker container
+[2024-06-24T09:37:31.815+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-06-24T09:37:31.818+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/docker/api/client.py", line 275, in _raise_for_status
+    response.raise_for_status()
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: http://docker-proxy:2375/v1.43/containers/create
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/docker/operators/docker.py", line 371, in _run_image
+    return self._run_image_with_mounts([*self.mounts, tmp_mount], add_tmp_variable=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/docker/operators/docker.py", line 398, in _run_image_with_mounts
+    self.container = self.cli.create_container(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/docker/api/container.py", line 440, in create_container
+    return self.create_container_from_config(config, name, platform)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/docker/api/container.py", line 457, in create_container_from_config
+    return self._result(res, True)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/docker/api/client.py", line 281, in _result
+    self._raise_for_status(response)
+  File "/home/airflow/.local/lib/python3.12/site-packages/docker/api/client.py", line 277, in _raise_for_status
+    raise create_api_error_from_http_exception(e) from e
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/docker/errors.py", line 39, in create_api_error_from_http_exception
+    raise cls(e, response=response, explanation=explanation) from e
+docker.errors.APIError: 400 Client Error for http://docker-proxy:2375/v1.43/containers/create: Bad Request ("invalid mount config for type "bind": bind source path does not exist: /tmp/airflowtmp3bqnd5oh")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 793, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 496, in _make_request
+    conn.request(
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 400, in request
+    self.endheaders()
+  File "/usr/local/lib/python3.12/http/client.py", line 1331, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.12/http/client.py", line 1091, in _send_output
+    self.send(msg)
+  File "/usr/local/lib/python3.12/http/client.py", line 1035, in send
+    self.connect()
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 238, in connect
+    self.sock = self._new_conn()
+                ^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x76a05169d820>: Failed to establish a new connection: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 793, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 496, in _make_request
+    conn.request(
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 400, in request
+    self.endheaders()
+  File "/usr/local/lib/python3.12/http/client.py", line 1331, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.12/http/client.py", line 1091, in _send_output
+    self.send(msg)
+  File "/usr/local/lib/python3.12/http/client.py", line 1035, in send
+    self.connect()
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 238, in connect
+    self.sock = self._new_conn()
+                ^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x76a0516a5c40>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 847, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='docker-proxy', port=2375): Max retries exceeded with url: /v1.43/containers/4931df0b5d42713bbbfaf3103074c839d0fb73767cc1016e1c28bc367a529878/stop (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x76a0516a5c40>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 831, in urlopen
+    if isinstance(e, (BaseSSLError, CertificateError)):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 2612, in signal_handler
+    self.task.on_kill()
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/docker/operators/docker.py", line 532, in on_kill
+    self.cli.stop(self.container["Id"])
+  File "/home/airflow/.local/lib/python3.12/site-packages/docker/utils/decorators.py", line 19, in wrapped
+    return f(self, resource_id, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/docker/api/container.py", line 1211, in stop
+    res = self._post(url, params=params, timeout=conn_timeout)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/docker/utils/decorators.py", line 44, in inner
+    return f(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/docker/api/client.py", line 242, in _post
+    return self.post(url, **self._set_request_timeout(kwargs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='docker-proxy', port=2375): Max retries exceeded with url: /v1.43/containers/4931df0b5d42713bbbfaf3103074c839d0fb73767cc1016e1c28bc367a529878/stop (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x76a0516a5c40>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/docker/operators/docker.py", line 438, in _run_image_with_mounts
+    result = self.cli.wait(self.container["Id"])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/docker/utils/decorators.py", line 19, in wrapped
+    return f(self, resource_id, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/docker/api/container.py", line 1347, in wait
+    res = self._post(url, timeout=timeout, params=params)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/docker/utils/decorators.py", line 44, in inner
+    return f(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/docker/api/client.py", line 242, in _post
+    return self.post(url, **self._set_request_timeout(kwargs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/adapters.py", line 501, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='docker-proxy', port=2375): Max retries exceeded with url: /v1.43/containers/4931df0b5d42713bbbfaf3103074c839d0fb73767cc1016e1c28bc367a529878/stop (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x76a0516a5c40>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 793, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 496, in _make_request
+    conn.request(
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 400, in request
+    self.endheaders()
+  File "/usr/local/lib/python3.12/http/client.py", line 1331, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.12/http/client.py", line 1091, in _send_output
+    self.send(msg)
+  File "/usr/local/lib/python3.12/http/client.py", line 1035, in send
+    self.connect()
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 238, in connect
+    self.sock = self._new_conn()
+                ^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x76a0516a5f10>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 847, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='docker-proxy', port=2375): Max retries exceeded with url: /v1.43/containers/4931df0b5d42713bbbfaf3103074c839d0fb73767cc1016e1c28bc367a529878?v=False&link=False&force=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x76a0516a5f10>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/docker/operators/docker.py", line 509, in execute
+    return self._run_image()
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/docker/operators/docker.py", line 380, in _run_image
+    return self._run_image_with_mounts(self.mounts, add_tmp_variable=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/docker/operators/docker.py", line 462, in _run_image_with_mounts
+    self.cli.remove_container(self.container["Id"])
+  File "/home/airflow/.local/lib/python3.12/site-packages/docker/utils/decorators.py", line 19, in wrapped
+    return f(self, resource_id, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/docker/api/container.py", line 1034, in remove_container
+    res = self._delete(
+          ^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/docker/utils/decorators.py", line 44, in inner
+    return f(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/docker/api/client.py", line 254, in _delete
+    return self.delete(url, **self._set_request_timeout(kwargs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/sessions.py", line 671, in delete
+    return self.request("DELETE", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='docker-proxy', port=2375): Max retries exceeded with url: /v1.43/containers/4931df0b5d42713bbbfaf3103074c839d0fb73767cc1016e1c28bc367a529878?v=False&link=False&force=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x76a0516a5f10>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[2024-06-24T09:37:32.515+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=docker_postgres_dag, task_id=run_postgres_container, run_id=scheduled__2024-06-24T00:00:00+00:00, execution_date=20240624T000000, start_date=20240624T085653, end_date=20240624T093732
+[2024-06-24T09:37:32.703+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 3 for task run_postgres_container (HTTPConnectionPool(host='docker-proxy', port=2375): Max retries exceeded with url: /v1.43/containers/4931df0b5d42713bbbfaf3103074c839d0fb73767cc1016e1c28bc367a529878?v=False&link=False&force=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x76a0516a5f10>: Failed to establish a new connection: [Errno 111] Connection refused')); 212)
+[2024-06-24T09:37:32.780+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=212, status='terminated', exitcode=1, started='08:56:52') (212) terminated with exit code 1
+[2024-06-24T09:37:32.790+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 143
+[2024-06-24T09:37:33.065+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-06-24T09:37:34.543+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
